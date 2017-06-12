@@ -24,6 +24,11 @@ operation.
 The "components" folder works similarly, except it doesn't install an "app", but rather a "component", which
 might be either a visual widget, or a supporting Active Event, or anything in between.
 
+## Installation
+
+Make sure you put the system42 folder inside of your _"/phosphorusfive/core/p5.webapp/"_ folder, and make sure
+the System42 folder is called exactly _"/system42/"_. Remove any additional parts of its name, such as versioning number, etc.
+
 ## Structure
 
 The _"application-startup.hl"_ file is evaluated when your application pool starts. This file creates a 
