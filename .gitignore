@@ -1,0 +1,11 @@
+#all MAC directory files
+**/.DS_Store
+
+#DSW8
+apps/*
+!apps/CMS
+!apps/Executor
+!apps/Unit tests
+
+#All Mac temp files
+**/.DS_Store
