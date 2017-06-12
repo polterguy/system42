@@ -3,7 +3,7 @@
  * Responsible for loading up the user interface. 
  * Invoked by the core P5 framework when the UI is needed.
  *
- * Argument expected to by supplied is [_url], being the URL of the page requested.
+ * Argument expected to by supplied is [url], being the URL of the page requested.
  */
 create-event:p5.web.load-ui
 
@@ -71,11 +71,11 @@ create-event:p5.web.load-ui
       return
 
     /*
-     * Figuring out which page to load according to argument supplied in [_url].
+     * Figuring out which page to load according to argument supplied in [url].
      * Notice, if page is not found, we simply load the first page we find.
      */
     p5.data.select:x:@"(/*/*/p5.page/""={0}""|/*/*/p5.page/[0,1])/[0,1]"
-      :x:/../*/_url?value
+      :x:/../*/url?value
 
     /*
      * Checking if page exists, and if not, loading our "page not found" special page.
@@ -103,7 +103,7 @@ create-event:p5.web.load-ui
       set:x:/+2?value
         src:@CMS/page-loader/{0}.hl
           :x:/..else/..else/*/p5.data.select/*/*/type?value
-      eval-x:x:/+/*/_url
+      eval-x:x:/+/*/url
       sys42.utilities.execute-lambda-file
         _args
-        _url:x:/../*/_url?value
+        _url:x:/../*/url?value
