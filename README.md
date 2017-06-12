@@ -26,9 +26,9 @@ might be either a visual widget, or a supporting Active Event, or anything in be
 
 ## Structure
 
-All files belonging to System42 is contained in the _"/system42/"_ folder. The _"application-startup.hl"_ 
-file is evaluated when your application pool starts. This file creates a couple of helper Active Events, 
-for evaluating Hyperlambda files, and folders. In addition, it evaluates all files in the "/system42/startup/" folder.
+The _"application-startup.hl"_ file is evaluated when your application pool starts. This file creates a 
+couple of helper Active Events, for evaluating Hyperlambda files, and folders. In addition, it evaluates 
+all files in the "/system42/startup/" folder.
 
 When it is done with the above tasks, it will evaluate all "application specific" and "components specific"
 startup files. These are files inside of any "/system42/apps/xxx/" and "/system42/components/xxx/" folders, 
