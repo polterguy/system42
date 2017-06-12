@@ -1,11 +1,13 @@
 System42, a non-CMS
 ========
 
-System42 is an example minimalistic CMS, built on top of Phosphorus Five. It also includes 
-several helper components.
+System42 is an example minimalistic CMS and use-case of [Phosphorus Five](https://github.com/polterguy/phosphorusfive).
+It also includes several helper components.
 
 The purpose of System42, is to provide a starting point, and example/reference implementation,
 when developing Phosphorus Five applications.
+
+![alt screenshot](screenshot.png)
 
 System42, is also a "host" for your web apps, by allowing you to install your apps.
 To install an app into System42, is as simple as an x-copy operation, pasting your app 
