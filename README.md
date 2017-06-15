@@ -27,7 +27,7 @@ might be either a visual widget, or a supporting Active Event, or anything in be
 ## Installation
 
 Make sure you put the system42 folder inside of your _"/phosphorusfive/core/p5.webapp/"_ folder, and make sure
-the System42 folder is called exactly _"/system42/"_. Remove any additional parts of its name, such as versioning number, etc.
+the System42 folder is called exactly _"system42"_. Remove any additional parts of its name, such as versioning number, etc.
 
 ## Structure
 
