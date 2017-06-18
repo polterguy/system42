@@ -16,3 +16,12 @@ your app, preferably _before_ you start P5 for the first time, to make sure your
 might put things into your database, or create some other objects hanging around, even after uninstallation.
 
 The name of your app, becomes the name you choose to use for your app's folder.
+
+## Preinstalled apps in System42
+
+There are 3 apps by default in System 42, these are mentioned below.
+
+- [CMS](CMS/) an "anti-CMS" allowing you to dynamically create lambda pages
+- [Executor](Executor/) allowing you to evaluate Hyperlambda from within your browser
+- [Unit tests](Unit tests/) allowing you to run the unit tests. The Unit testing "framework" of System42 is extendible
+
