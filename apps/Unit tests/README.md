@@ -5,7 +5,6 @@ This folder contains the unit tests for Phosphorus Five. You can easily extend t
 from your browser, run them, and even create a "coverage report" of how many times each Active Event in your system is invoked
 through your test suite.
 
-To run the tests, you must be logged in as root.
+To run the tests, you must be logged in as root. Below is a screenshot of the Unit tests in System42.
 
-
-
+![alt screenshot](screenshot.png)
