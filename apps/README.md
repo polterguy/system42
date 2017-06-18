@@ -23,5 +23,5 @@ There are 3 apps by default in System 42, these are mentioned below.
 
 - [CMS](CMS/) an "anti-CMS" allowing you to dynamically create lambda pages
 - [Executor](Executor/) allowing you to evaluate Hyperlambda from within your browser
-- [Unit tests](Unit tests/) allowing you to run the unit tests. The Unit testing "framework" of System42 is extendible
+- [Tests](Unit tests/) allowing you to run the unit tests. The Unit testing "framework" of System42 is extendible
 
