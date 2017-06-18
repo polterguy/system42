@@ -31,11 +31,14 @@ Below you can find the two most important folders in the system.
 
 Make sure you put the system42 folder inside of your _"/phosphorusfive/core/p5.webapp/"_ folder, and make sure
 the System42 folder is called exactly _"system42"_. Remove any additional parts of its name, such as versioning number, etc.
-After you have done this part, you have to change your web.config `.p5.webapp.application-startup-file` setting to become the following.
+After you have done this part, you have to change your web.config `.p5.webapp.application-startup-file` setting in
+your _"/phosphorusfive/p5.webapp/web.config"_ file to become the following.
 
 ```xml
 <add key=".p5.webapp.application-startup-file" value="/system42/application-startup.hl" />
 ```
+
+You can find the above setting at roughly line 96 in your web.config.
 
 Restart your web server process, and you should be up running.
 
