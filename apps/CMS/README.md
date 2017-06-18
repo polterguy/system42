@@ -3,7 +3,10 @@ System42's "anti-CMS"
 ========
 
 The CMS application is a pretty nifty publishing system, allowing you to create and publish your own websites and pages.
-In addition to being able to create HTML in a WYSIWYG environment, it also allows for you to create _"lambda"_ pages.
+In addition to being able to create HTML in a WYSIWYG environment, it also allows for you to create _"lambda"_ pages. Below
+is a screenshot of the CMS in System42.
+
+![alt screenshot](screenshot.png)
 
 A lambda page, is a page that instead of passing raw HTML to the client, allows you to create Hyperlambda that is evaluated
 on the server. Ususally, you would want to create some sort of Ajax Widget hierarchy when creating your lambda pages. But you can
