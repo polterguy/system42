@@ -78,18 +78,6 @@ You must have a specialized editor file, within _"/page-editor/specialized-edito
 the _"/page-loader/"_ folder. However, the default new page template, within the _"/page-editor/new-page-templates/"_ folder is optional,
 and if not supplied, no default properties for your page will be created.
 
-#### Extendibility
-
-In general, as you can see above, the CMS in System42 is super extendible, allowing you to create your own custom pages, completely
-taking control over all aspects of your page, from editing to loading. In addition, you can also both globally modify the toolbar,
-by adding your own toolbar button(s) inside of the _"/page-editors/toolbar-buttons/"_ folder, or local toolbar buttons, for your 
-specialized editor inside of the _"/page-editor/specialized-editor/xxx/toolbar-buttons/"_ folder, where _"xxx"_ is the *[type]* of
-page you wish to create.
-
-The _"lambda"_ page *[type]* for instance, have a specialized toolbar button, allowing you to verify, and view meta information about 
-your *[lambda]* page. See the _"meta-info.hl"_ file inside of the _"/specialized-editors/lambda/toolbar-buttons/"_ folder to see an 
-example of a page type specialized toolbar button.
-
 ### The "page-loader" folder
 
 This folder, contains all the specialized "loaders" for your pages. See above the documentation for the "page-editor" folder to
@@ -109,4 +97,16 @@ and does other types of initialization the system is dependent upon to function 
 The most important file in this folder is the _"p5.web.load-ui.hl"_. This file creates an Active Event, which is raised by the
 Phosphorus Five core or kernel, and is expected to serve documents according to URLs. It is given a single argument *[url]*, 
 which is the relative URL to the page requested by the client.
+
+### Extendibility
+
+In general, as you can see above, the CMS in System42 is super extendible, allowing you to create your own custom pages, completely
+taking control over all aspects of your page, from editing to loading. In addition, you can also both globally modify the toolbar,
+by adding your own toolbar button(s) inside of the _"/page-editors/toolbar-buttons/"_ folder, or local toolbar buttons, for your 
+specialized editor inside of the _"/page-editor/specialized-editor/xxx/toolbar-buttons/"_ folder, where _"xxx"_ is the *[type]* of
+page you wish to create.
+
+The _"lambda"_ page *[type]* for instance, have a specialized toolbar button, allowing you to verify, and view meta information about 
+your *[lambda]* page. See the _"meta-info.hl"_ file inside of the _"/specialized-editors/lambda/toolbar-buttons/"_ folder to see an 
+example of a page type specialized toolbar button.
 
