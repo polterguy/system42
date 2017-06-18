@@ -27,10 +27,16 @@ Below you can find the two most important folders in the system.
 - [Components](components/) which are the components in System42, such as Ajax TreeViews, Modal Windows, etc
 - [Apps](apps/) which are the preinstalled apps in System42, such as the "anti-CMS" and Hyperlambda Executor, etc
 
-## Installation
+## Installation, getting started
 
 Make sure you put the system42 folder inside of your _"/phosphorusfive/core/p5.webapp/"_ folder, and make sure
 the System42 folder is called exactly _"system42"_. Remove any additional parts of its name, such as versioning number, etc.
+After you have done this part, you have to change your web.config `.p5.webapp.application-startup-file` setting to become the following.
+
+```xml
+<add key=".p5.webapp.application-startup-file" value="/system42/application-startup.hl" />
+```
+
 Restart your web server process, and you should be up running.
 
 During the first startup of System42, you will be required to supply a server salt, and a root password. If you're in a live environment,
