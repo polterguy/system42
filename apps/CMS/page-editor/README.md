@@ -1,4 +1,4 @@
-System42's CMS page editor(s).
+System42's CMS page editor(s)
 ========
 
 This folder contains the Hyperlambda, necessary to edit your CMS pages. By default, System42's CMS comes with two page types

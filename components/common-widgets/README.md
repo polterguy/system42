@@ -1,3 +1,4 @@
+
 Ajax extension widgets
 ========
 
@@ -34,7 +35,7 @@ plain *[literal]* widget, you add up an invocation to your own custom extension 
 Below is an example of how to create an Ajax DateTimePicker for instance.
 
 ```
-p5.web.widgets.create-container:foo
+create-widget:foo
   parent:content
   class:col-xs-4
   widgets
@@ -42,7 +43,7 @@ p5.web.widgets.create-container:foo
 ```
 
 Notice, instead of adding a *[literal]*, *[container]* or *[void]* into your *[widgets]* collection - We add a reference to our DateTimePicker 
-through *[sys42.widgets.datetimepicker]* instead. The above code will resemble someething like the following.
+through the *[sys42.widgets.datetimepicker]* Active Event. The above code will resemble something like the following.
 
 ![alt tag](../bootstrap/widgets/datetimepicker/screenshots/datetimepicker-example-screenshot.png)
 
@@ -71,7 +72,7 @@ create-event:foo.my-widget
 If you execute the above code, in for instance the System42/Executor, for then to create a "lambda" page in your CMS, with the following code.
 
 ```
-p5.web.widgets.create-container:foo
+create-widget:foo
   parent:content
   class:col-xs-4
   widgets
@@ -84,8 +85,8 @@ Then your result will look something like the following.
 
 Assuming you've got bootstrap included on your page ...
 
-This makes it very easy to stay _"DRY"_ in your Ajax apps - DRY means Don't Repeat Yourself - Simply by creating reusable Ajax widgets, for the HTML
-and Widget hierarchies you tend to write over again.
+This makes it very easy to stay DRY in your Ajax apps - DRY means _Don't Repeat Yourself_ - Simply by creating reusable Ajax widgets, for the HTML
+and Widget hierarchies you tend to create multiple times.
 
 The above widget, simply shows a *[sys42.windows.info-tip]* when its value is changed, but far richer widgets are easily created using the same logic.
 

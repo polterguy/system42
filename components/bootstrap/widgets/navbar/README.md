@@ -5,7 +5,8 @@ This folder contains the Bootstrap Ajax Navbar widget, that allows you to create
 Even though the widget is 100% Ajax based, it still allows you to create a navigation menu, where the items are visible to search engines.
 Items can also be bookmarked.
 
-To use it, add it to a container widget collection, through its widget creational Active Event *[sys42.widgets.navbar]*. Example below.
+To use it, add it to a container widget collection, through its widget creational Active Event *[sys42.widgets.navbar]*. Make sure
+you use a template for its settings that doesn't create the default navbar from the CMS.
 
 ```
 /*
@@ -14,14 +15,14 @@ To use it, add it to a container widget collection, through its widget creationa
  * you create its parent widget as a 'nav' HTML element, to ensure the
  * correct semantics for your Navbar.
  */
-p5.web.widgets.create-container:my-navbar
+create-widget:my-navbar
   position:0
   parent:cnt
   element:nav
   class:navbar navbar-default navbar-fixed-top
   widgets
 
-    // Notice, no [_class] property on Navbar, see above comment.
+    // Notice, no [class] property on Navbar, see above comment.
     sys42.widgets.navbar
 
       // Setting the navbar into "SEO"/crawler-friendly mode.
@@ -36,10 +37,12 @@ p5.web.widgets.create-container:my-navbar
           items
             Open:open
               .onclick
-                sys42.windows.info-tip:You tried to open a file
+                sys42.windows.confirm
+                  header:You tried to open a file
             Close:close
               .onclick
-                sys42.windows.info-tip:Closing file
+                sys42.windows.confirm
+                  header:Closing file
 
             // If you add a menu item with the name of [_separator], it will
             // create a horizonat separator between your items.
@@ -48,22 +51,27 @@ p5.web.widgets.create-container:my-navbar
             // This one is shown after the separator.
             Save:save
               .onclick
-                sys42.windows.info-tip:And we're going to save ...
+                sys42.windows.confirm
+                  header:And we're going to save ...
 
         Edit:edit
           .onclick
-            sys42.windows.info-tip:Edit was clicked
+            sys42.windows.confirm
+              header:Edit was clicked
         Windows
           items
             First Window:first-window
               .onclick
-                sys42.windows.info-tip:First window clicked
+                sys42.windows.confirm
+                  header:First window clicked
             Second Window:second-window
               .onclick
-                sys42.windows.info-tip:Second window clicked
+                sys42.windows.confirm
+                  header:Second window clicked
         View:view
           .onclick
-            sys42.windows.info-tip:View was clicked
+            sys42.windows.confirm
+              header:View was clicked
 ```
 
 The above code will produce something like the following.
@@ -71,14 +79,14 @@ The above code will produce something like the following.
 ![alt tag](screenshots/ajax-navbar-menu-example-screenshot.png)
 
 Notice, if you create the above Hyperlambda as a lambda page in your CMS, you must make sure you use a template without a navbar menu. Otherwise,
-the two menus will be rendered at the same position, and only one of them will be visible. The _"no-navbar-menu"_ template for instance, is perfect.
+the two menus will be rendered at the same position, and only one of them will be visible. The _"no-navbar-menu"_ template for instance is perfect.
 
 Notice also, that you actually control the Navbar's appearance on the CSS classes you use for its parent widget. The Navbar itself, actually has 
-no *[_class]* property. The above Hyperlambda for instance, creates a Navbar attached to the top of your screen. If you wish to attach it to the 
+no *[class]* property. The above Hyperlambda for instance, creates a Navbar attached to the top of your screen. If you wish to attach it to the 
 bottom of your screen for instance, you could use something like the following.
 
 ```
-p5.web.widgets.create-container:my-navbar
+create-widget:my-navbar
   position:0
   parent:cnt
   element:nav
@@ -89,7 +97,7 @@ p5.web.widgets.create-container:my-navbar
 
 ## Ninja tricks
 
-Since the Navbar is just another widget, you can actually stuff it anywhere you wish. Although, I do definitely not recommend this, you could for instance
+Since the Navbar is just another widget, you can actually stuff it anywhere you wish. Although, I do not recommend this in general, you could for instance
 put a Navbar inside your Modal Windows. Below is an example of such a thing.
 
 ```
@@ -107,15 +115,15 @@ sys42.windows.modal
                 Open:open
                   .onclick
                     sys42.windows.info-tip:You tried to open a file
-                      _parent:sys42-windows-modal-body-wrapper
+                      parent:sys42-windows-modal-body-wrapper
                 Close:close
                   .onclick
                     sys42.windows.info-tip:Closing file
-                      _parent:sys42-windows-modal-body-wrapper
+                      parent:sys42-windows-modal-body-wrapper
             Edit:edit
               .onclick
                 sys42.windows.info-tip:Edit was clicked
-                  _parent:sys42-windows-modal-body-wrapper
+                  parent:sys42-windows-modal-body-wrapper
     literal
       element:p
       innerValue:Here is an example of a Navbar rendered inside a Modal Ajax Window.
@@ -139,6 +147,6 @@ with smaller screens, such as phones for instance. Below is a screenshot of how 
 
 ![alt tag](screenshots/ajax-navbar-menu-example-screenshot-responsive.png)
 
-The menu will automatically "re-arrange" itself, and become a responsive popdown menu, if the screen resolution is smaller than some specific
+The menu will automatically re-arrange itself, and become a responsive popdown menu, if the screen resolution is smaller than some specific
 threshold. This allows it to render on smaller devices, without ending up adding vertical scrolling constraints.
 

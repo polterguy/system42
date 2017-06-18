@@ -70,7 +70,8 @@ create-event:sys42.widgets.navbar._create-items
        */
       add:x:/../*/return
         src
-          li
+          literal
+            element:li
             class:divider
             role:separator
 
@@ -125,14 +126,14 @@ create-event:sys42.widgets.navbar._create-items
                   if
                     p5.web.request.is-ajax-callback
                     p5.web.send-javascript:@"if ($(window).width() < 768) {$('.navbar-toggle').click();}"
-                  p5.web.widgets.find-ancestor-like:x:/../*/_event?value
+                  p5.web.widgets.find-first-ancestor-like:x:/../*/_event?value
                     element:ul
                     class:dropdown-menu
-                  if:x:/@p5.web.widgets.find-ancestor-like/*/*?value
+                  if:x:/@p5.web.widgets.find-first-ancestor-like/*/*?value
                     and
                       p5.web.request.is-ajax-callback
                     p5.web.send-javascript:@"$('#{0}').dropdown('toggle');"
-                      :x:/@p5.web.widgets.find-ancestor-like/*/*?value
+                      :x:/@p5.web.widgets.find-first-ancestor-like/*/*?value
 
   /*
    * Returning widget collection to caller.

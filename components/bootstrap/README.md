@@ -2,7 +2,7 @@ Bootstrap CSS
 ===============
 
 This directory contains the Bootstrap CSS framework, together with some supporting Active Events.
-For documentation, check out [Bootstrap dox](http://getbootstrap.com/css/)
+For documentation, check out [Bootstrap dox](http://getbootstrap.com/css/).
 
 Some components and apps in System42 are dependent upon this module to work correctly. Check the documentation
 for your specific components, before attempting to remove it.

@@ -1,13 +1,14 @@
-An SEO Ajax TreeView widget
+
+The System42 Ajax TreeView widget
 ========
 
 This folder contains the Ajax extension TreeView widget, that can be traversed by search engines, and even allows you to bookmark
-items in it, by for instance by right clicking and item, and choose _"Open in new tab"_.
+items in it, by for instance right clicking an item, and choose _"Open in new tab"_.
 
 To use it, simply add it to a container widget collection, through its widget creational Active Event *[sys42.widgets.tree]*. Example below.
 
 ```
-p5.web.widgets.create-container
+create-widget
   parent:content
   widgets
     sys42.widgets.tree
@@ -40,20 +41,20 @@ like the following.
 
 Notice, if you right click an item, and choose _"Open in new tab"_ for instance, then the URL opened, will unroll the TreeView,
 to whatever item you choose. This is due to the *[crawl]* parameter being set to true. This works by adding an HTTP GET parameter to
-the current URL, which contains the IDs of every single item, separated by "|", necessary to toggle, to open up the tree, to the point
-you requested. This is done on the server, and hence makes the TreeView very _"SEO friendly"_, in addition to allowing your users to
+the current URL, which contains the IDs of every single item, separated by "|", necessary to toggle, in order to open up the tree, to the point
+you requested. This is done on the server, and hence makes the TreeView very SEO friendly. In addition it allows your users to
 bookmark items. If you wish to override the name of the HTTP GET parameter used for this operation, you can do so with 
 the *[crawl-get-name]* argument while creating your tree.
 
 You can also add your own item root CSS class for your items. In the above example, we add the class _"tree-leaf"_, which removes the
-expand icon on items, through the *[_class]* argument on each item inside of your *[items]* collection. In our next example we will see 
+expand icon on items, through the *[class]* argument on each item inside of your *[items]* collection. In our next example we will see 
 this more accurately, using a bunch of statically loaded items.
 
 The *[items]* collection, are your initial items for when the widget is created. If wish, you can supply an initial set of *[items]*,
 that have children items themselves, such as this example shows you.
 
 ```
-p5.web.widgets.create-container
+create-widget
   parent:content
   class:col-xs-12
   widgets
@@ -78,11 +79,11 @@ p5.web.widgets.create-container
 As the above example also illustrates, you can also have multiple root items. There must however be at least _one_ item, otherwise the
 widget will throw an exception during initialization.
 
-You can also override the CSS class(es) used for specific items, both their _"open state"_ and their _"closed state"_ classes. Below is an 
+You can also override the CSS class(es) used for specific items, both their open state and their closed state classes. Below is an 
 example of this.
 
 ```
-p5.web.widgets.create-container
+create-widget
   parent:content
   class:col-xs-12
   widgets
@@ -127,11 +128,11 @@ your needs, feel free to either include Bootstrap, or override the default CSS c
 To see how to do include Bootstrap, check out the documentation for the [Bootstrap CSS](../../bootstrap/) module. The default template used in your CSS
 automatically includes Bootstrap though.
 
-Notice, all arguments are optional, except the *[_items]* collection, that must have, at the very least, minimum _one_ item. Making the
+Notice, all arguments are optional, except the *[items]* collection, that must have, at the very least, minimum _one_ item. Making the
 smallest possible code to use the Tree view look something like this.
 
 ```
-p5.web.widgets.create-container
+create-widget
   widgets
     sys42.widgets.tree
       items
@@ -140,10 +141,10 @@ p5.web.widgets.create-container
 
 Of course, unless you supply an *[.on-get-items]* callback lambda, then no new items can possibly be appended to your tree view, and it will
 only show the items you initially feed it with. If you wish to being able to dynamically feed your widget with new items, you must add
-the *[.on-get-items]* lambda callback, where you are expected to return an *[items]* collection, resembling the *[items]* collection you
+an *[.on-get-items]* lambda callback, where you are expected to return an *[items]* collection, resembling the *[items]* collection you
 initially gave it when the widget was created.
 
-You can also toggle multiple items at the same time, by returning a nested *[items]* collection, as the following demonstrates.
+You can also toggle multiple items at the same time, by returning a nested *[items]* collection, such as the following illustrates.
 
 ```
 create-widget
@@ -209,7 +210,7 @@ achieve using its API. The *[sys42.widgets.tree.select-items]* lambda widget eve
 Click the button to select both the _"foo-1"_ and the _"bar-2"_ item.
 
 ```
-p5.web.widgets.create-container
+create-widget
   parent:content
   class:col-xs-12
   widgets
@@ -237,7 +238,7 @@ p5.web.widgets.create-container
 
 Hint, you can also, by using its API, _"unroll"_ items, or _"toggle"_ items, by invoking the *[sys42.widgets.tree.toggle-items]* Active Event.
 Which takes the exact same set of parameters as the *[sys42.widgets.tree.select-items]* event. Below is an example of toggling (collapsing)
-two items in your tree, through clicking a button.
+two items in your tree, by clicking a button.
 
 ```
 create-widget
@@ -303,17 +304,17 @@ create-widget
 Notice, the *[sys42.widgets.tree.get-selected-items]* event, might return also 0 or multiple items, depending upon how many items the user has selected, 
 and if you have somehow selected multiple items through its API, or something similar.
 
-## Styling your Ajax tree widget
+## Styling your Ajax tree view
 
 You can also override the skin used for the TreeView widget. To use another skin, pass in the skin you wish to use as a *[skin]* argument. 
 The default value here is _"default"_, which is the CSS found in the _"default/default.min.css"_ file.
 
-Besides from this file, the widget is not dependent upon any CSS files in any ways, except of the default icons for closed and opened
+Besides from this file, the widget is not dependent upon any CSS files in any ways, except the default icons for closed and opened
 icon items, which are taken from the _"glyphicons"_ from Bootstrap CSS. If you wish to use other glyphicons, you can see the entire list
 of available icons at the [Bootstrap CSS website](http://getbootstrap.com/components/). You can of course use your own icons, independently
 of the glyphicons from Bootstrap, at which case you no longer need to include Bootstrap.
 
-If you use the glyphicons, you are yourself responsible for making sure you include Bootstrap CSS, which can be done, by reading the 
+If you use glyphicons, you are yourself responsible for making sure you include Bootstrap CSS, which can be done, by reading the 
 documentation for the System42 [Bootstrap CSS module](../../bootstrap/). You only need to include the CSS file
 though, and not any of the JavaScript files. As previously said though, the default template of the CMS, automatically includes Bootstrap.
 
@@ -354,17 +355,16 @@ The above example will render something like the following.
 ## Bandwidth usage
 
 The Ajax TreeView widget actually does not itself use any custom JavaScript, besides the core JavaScript from p5.ajax, which in its
-minified version, is roughly 2.8KB of JavaScript. In addition, it uses only three tiny images by default, and one tiny CSS
+minified version, is roughly 3KB of JavaScript. In addition, it uses only three tiny images by default, and one tiny CSS
 file. So in its absolutely minimum version, without Bootstrap included, the entire download for your clients, is less than 10KB for the
 initial loading. And as you expand items, it loads an addition ~1KB for each Ajax request, depending upon how many items you return.
 
-Everything is transferred from the server as JSON (which is the default behavior of [p5.ajax](/core/p5.ajax/), and the bandwidth usage for
+Everything is transferred from the server as JSON (which is the default behavior of p5.ajax, and the bandwidth usage for
 expanding two items with 3 and 2 children items each, becomes ~1.2KB of JSON transferred from your server.
 
 ## Server resource consumption
 
 The widget will only request new items when an item is initially expanded through your supplied *[.on-get-items]* lambda callback. On consecutive
 expansions for the same items, it will simply remove a _"hide"_ CSS class on the client, never invoking your get items lambda callback.
-
 This means it is also very cheap in regards to server resource usage, if the user is expanding and hiding the same items, looking for 
 some specific node, in your tree.

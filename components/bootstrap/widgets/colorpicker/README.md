@@ -6,7 +6,7 @@ and [Javi Aguilar](https://itsjavi.com/)'s [Bootstrap ColorPicker](https://itsja
 allows your users to pick a color. Below is an example of how to use it.
 
 ```
-p5.web.widgets.create-container
+create-widget
   parent:content
   class:col-xs-4
   widgets
@@ -21,9 +21,9 @@ p5.web.widgets.create-container
       value:#ff00ff
       label:My color
       .onchange
-        p5.web.widgets.property.set:output-widget
+        set-widget-property:output-widget
           style:"background-color:{0};"
-            :x:/../*/_value?value
+            :x:/../*/value?value
 ```
 
 The above code will create something like the following.
@@ -32,10 +32,10 @@ The above code will create something like the following.
 
 You can pass in the following arguments to the colorpicker.
 
-* [_value] - Initial value, can be either '#xxyyzz', 'rgba(x,y,z,q)' or named color (e.g. 'yellow').
+* [value] - Initial value, can be either '#xxyyzz', 'rgba(x,y,z,q)' or named color (e.g. 'yellow').
 * [.onchange] - Lambda callback evaluated when value changes. [_value] and [_event] is passed into it.
-* [_label] - An optional descriptive label for your colorpicker.
-* [_class] - Optional CSS classes to use. Defaults to "input-group colorpicker-component colorpicker-element".
+* [label] - An optional descriptive label for your colorpicker.
+* [class] - Optional CSS classes to use. Defaults to "input-group colorpicker-component colorpicker-element".
 
 ## Active Events
 
@@ -47,14 +47,14 @@ The ColorPicker also contains the following Active Events.
 To use them, make sure you pass in the ID of your ColorPicker as *[_arg]*, such as the following illustrates.
 
 ```
-p5.web.widgets.create-container
+create-widget
   parent:content
   class:col-xs-4
   widgets
     sys42.widgets.colorpicker:my-color-picker
       value:#ff00ff
       label:My color
-p5.web.widgets.create-container
+create-widget
   parent:content
   class:col-xs-8
   widgets

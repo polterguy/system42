@@ -1,3 +1,4 @@
+
 Drag and drop Ajax uploader
 ========
 
@@ -8,15 +9,17 @@ to have a "browse for file(s) dialogue" open up.
 Below is an example of how to use it.
 
 ```
-p5.web.widgets.create-container:foo
+create-widget:foo
   parent:content
   class:col-xs-12
   widgets
     sys42.widgets.uploader
       .onupload
 
-        // Sleeping the current thread, just 
-        // to make sure user can see animation.
+        /*
+         * Sleeping the current thread, just 
+         * to make sure the user can actually see its animation.
+         */
         sleep:5000
         sys42.windows.info-tip:File '{0}' uploaded
           :x:/../*/_filename?value
@@ -27,17 +30,18 @@ The above would produce something like the following, when files are dragged and
 ![alt tag](screenshots/ajax-uploader-example-screenshot.png)
 
 When a file is dropped unto the above uploader or dropzone, then a nice animation will give visual clues to the user, that the file is in the
-process of being uploaded.
+process of being uploaded. If the file is some sort of image file, a preview of the file(s) uploaded will also show. You can drag and drop multiple
+files into its surface to upload at the same time if you wish.
 
 The uploader has the following arguments.
 
-* [_css-file] - A CSS file to include when widget is displayed. Defaults to "uploader.min.css".
-* [_class] - Default CSS class to use. Defaults to "uploader-widget".
-* [_dragover-class] - CSS class to add when files are dragged unto its surface. Defaults to "uploader-widget-dragover".
-* [_drop-class] - CSS class to use when a file is dropped in the widget. Defaults to "uploader-widget-drop".
-* [_error-class] - CSS class to use when an unsupported file type, or something similar, is dragged unto its surface.
-* [_allow-multiple] - If true, multiple files can be uploaded at the same time.
-* [_filter] - Filter for file types to accept. Separete extensions with pipe (|), e.g. "png|jpg|gif".
+* [css-file] - A CSS file to include when widget is displayed. Defaults to "uploader.min.css".
+* [class] - Default CSS class to use. Defaults to "uploader-widget".
+* [dragover-class] - CSS class to add when files are dragged unto its surface. Defaults to "uploader-widget-dragover".
+* [drop-class] - CSS class to use when a file is dropped in the widget. Defaults to "uploader-widget-drop".
+* [error-class] - CSS class to use when an unsupported file type, or something similar, is dragged unto its surface.
+* [allow-multiple] - If true, multiple files can be uploaded at the same time.
+* [filter] - Filter for file types to accept. Separete extensions with pipe (|), e.g. "png|jpg|gif".
 * [.onupload] - Lambda callback to invoke when a file has been uploaded.
 
 The default CSS file, contains some configuration classes, which allows you to control the positioning of your uploader widget. These are listed below.
@@ -55,7 +59,7 @@ will look like the following.
 
 ![alt tag](screenshots/ajax-uploader-example-screenshot-fullscreen.png)
 
-In the above screenshot, which has a *[_class]* of _"uploader-widget uploader-full-screen uploader-faded"_, your entire page will become a dropzone.
+In the above screenshot, which has a *[class]* of _"uploader-widget uploader-full-screen uploader-faded"_, your entire page will become a dropzone.
 
 ## Receiving your files on your server
 
@@ -70,25 +74,25 @@ Below is an example of how to create a fullscreen image uploader, that saves one
 user's _"documents/private/"_ folder.
 
 ```
-p5.web.widgets.create-container:foo
+create-widget:foo
   parent:cnt
   widgets
     sys42.widgets.uploader
-      _class:uploader-widget uploader-full-screen uploader-faded
-      _filter:jpg|jpeg|gif|png
+      class:uploader-widget uploader-full-screen uploader-faded
+      filter:jpg|jpeg|gif|png
       .onupload
 
         // Saving file, and notifying user of success.
-        p5.io.file.save:~/documents/private/{0}
+        save-file:~/documents/private/{0}
           :x:/../*/_filename?value
           src:x:/../*/_content?value
         sys42.windows.info-tip:File '{0}' was uploaded and saved
           :x:/../*/_filename?value
 ```
 
-Notice, the *[_filter]* above, restricts the filetypes to image types of either .png, .jpeg, .jpg or .gif. If 
+Notice, the *[filter]* above, restricts the filetypes to image types of either .png, .jpeg, .jpg or .gif. If 
 you try to drag and drop files of types not supported by the above uploader unto its surface, it will refuse
-to upload them, and show a "red error" CSS class to the user.
+to upload them, and show an error CSS class to the user.
 
 Notice also, that from a semantic point of view, if you use the _"uploader-full-screen"_ class, it is probably
 better if you append the uploader widget directly into the _"cnt"_ parent container.
@@ -98,13 +102,13 @@ better if you append the uploader widget directly into the _"cnt"_ parent contai
 Below is a small application that uses the Ajax uploader dropzone widget, and the Ajax DataGrid, to create a dropbox for your personal files.
 
 ```
-p5.web.widgets.create-container:ajax-dropbox
+create-widget:ajax-dropbox
   parent:content
   class:col-xs-12
   widgets
     sys42.widgets.uploader:uploader
       .onupload
-        p5.io.file.save:~/documents/private/{0}
+        save-file:~/documents/private/{0}
           :x:/../*/_filename?value
           src:x:/../*/_content?value
         sys42.windows.info-tip:File '{0}' was uploaded and saved
@@ -115,22 +119,22 @@ p5.web.widgets.create-container:ajax-dropbox
       element:hr
     sys42.widgets.datagrid:datagrid
       .on-get-items
-        p5.io.folder.list-files:~/documents/private/
-          filter:x:/../*/_query?value
+        list-files:~/documents/private/
+          filter:x:/../*/query?value
         for-each:x:/-/*?name
-          p5.string.split:x:/@_dp?value
+          split:x:/@_dp?value
             =:/
           add:x:/./*/add/[1,]/*/*
             src:"file:{0}"
-              :x:/@p5.string.split/0/-?name
+              :x:/@split/0/-?name
           eval-x:x:/+/*/*
-          add:x:/../*/return/*/_items
+          add:x:/../*/return/*/items
             src
               file:x:/@_dp?value
         return
-          _items
+          items
       .on-select-items
-        eval-x:x:/+/**(/p5.io.file.delete|/~download)
+        eval-x:x:/+/**(/delete-file|/~download)
         sys42.windows.confirm
           header:Choose action
           body:Choose if you wish to download file, or delete it
@@ -141,13 +145,13 @@ p5.web.widgets.create-container:ajax-dropbox
               oninit
                 sys42.windows.modal.initial-focus:x:/../*/_event?value
               onclick
-                sys42.cms.download-file:x:/../*/_items/*?name
+                sys42.cms.download-file:x:/../*/items/*?name
                 sys42.windows.modal.destroy
             button
               class:btn btn-default
               innerValue:Delete
               onclick
-                p5.io.file.delete:x:/../*/_items/*?name
+                delete-file:x:/../*/items/*?name
                 sys42.windows.modal.destroy
                 sys42.widgets.datagrid.databind:datagrid
 ```
@@ -156,5 +160,5 @@ The above piece of Hyperlambda, will result in something resembling this.
 
 ![alt tag](screenshots/ajax-dropbox-example-screenshot.png)
 
-When you click an item in the above DataGrid, a Modal Ajax window will ask you if you wish to delete or download the file. Not too bad for 52 
-lines of Hyperlambda ...
+When you click an item in the above DataGrid, a Modal Ajax window will ask you if you wish to delete or download 
+the file. Basically, a "complete" DropBox implementation. Not too bad for 52 lines of Hyperlambda.

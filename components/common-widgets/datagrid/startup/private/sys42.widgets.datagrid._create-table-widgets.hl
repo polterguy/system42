@@ -2,14 +2,14 @@
 /*
  * Invoked only once, during initialization of datagrid.
  *
- * Expects [_arg] being ID of datagrid, and [_columns] being column names.
+ * Expects [_arg] being ID of datagrid, and [columns] being column names.
  * Optionally, it might also be given an [.on-header-clicked] lambda callback, which if supplied, 
  * will be invoked when a header is clicked.
  */
 create-event:sys42.widgets.datagrid._create-table-widgets
 
   /*
-   * Creating column headers, by [apply]'ing [_columns] to [p5.web.widgets.create-container] invocation below.
+   * Creating column headers, by [apply]'ing [columns] to [p5.web.widgets.create-container] invocation below.
    */
   if:x:/../*/.on-header-clicked/*
 
@@ -20,7 +20,7 @@ create-event:sys42.widgets.datagrid._create-table-widgets
     add:x:/+/**/onclick
       src:x:/../*/.on-header-clicked/*
     apply:x:/../*/p5.web.widgets.create-container/*/widgets/*/tr/*/widgets
-      src:x:/../*/_columns/*
+      src:x:/../*/columns/*
       template
         th
           widgets
@@ -36,7 +36,7 @@ create-event:sys42.widgets.datagrid._create-table-widgets
      * Caller did not specify [.on-header-clicked], hence simply creating header columns as span elements.
      */
     apply:x:/../*/p5.web.widgets.create-container/*/widgets/*/tr/*/widgets
-      src:x:/../*/_columns/*
+      src:x:/../*/columns/*
       template
         th
           widgets

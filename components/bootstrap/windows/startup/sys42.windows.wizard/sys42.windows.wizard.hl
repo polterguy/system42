@@ -17,7 +17,7 @@
  *                     instead. [sys42.windows.modal.destroy] will not evaluate your [.oncancel] lambda callback.
  * [data]            - Will automatically create a widget collection, according to the type of data supplied.
  *                     The default widget type to use, is a normal textbox. However, if you supply a child node with the name of
- *                     [_options], it will create a select HTML element instead, with the option elements supplied as children of [_options].
+ *                     [options], it will create a select HTML element instead, with the option elements supplied as children of [options].
  * [.onok]           - Code to be evaluated if user clicks OK button
  * [.oncancel]       - Lambda callback to be evaluated if user closes dialogue without pressing "OK".
  *
@@ -52,7 +52,7 @@ create-event:sys42.windows.wizard
   /*
    * Looping through each [data] items, creating an edit widget for each item.
    *
-   * Notice, by default, this creates a textbox "input" HTML widget for each child node of [data], unless the node contains an [_options] child,
+   * Notice, by default, this creates a textbox "input" HTML widget for each child node of [data], unless the node contains an [options] child,
    * at which case it will create a "select" HTML widget instead, with the currently active value, being the value of the currently iterated
    * [data] child.
    *
@@ -63,7 +63,7 @@ create-event:sys42.windows.wizard
     /*
      * Checking what type of edit field this is.
      */
-    if:x:/@_dp/#/*/_options
+    if:x:/@_dp/#/*/options
 
       /*
        * Select dropdown choices.
@@ -106,7 +106,7 @@ create-event:sys42.windows.wizard
        * Using [apply] to create our "option" HTML widgets, and append into [widgets] of [select] below.
        */
       apply:x:/+2/**/select/*/widgets
-        src:x:/@_dp/#/*/_options/*
+        src:x:/@_dp/#/*/options/*
         template
           option
             {@eval}:x:/..if/*/_eval-option

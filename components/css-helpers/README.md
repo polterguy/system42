@@ -1,7 +1,8 @@
+
 CSS helper Active Events
 ===============
 
-This directory contains Hyperlambda that creates some CSS helper Active Events.
+This directory contains some CSS helper Active Events.
 These events, allows you to add, remove or toggle a CSS class to one or more widgets.
 The events created are listed below.
 
@@ -12,7 +13,7 @@ The events created are listed below.
 Example code given below.
 
 ```
-p5.web.widgets.create-container:my-widget
+create-widget:my-widget
   parent:content
   position:0
   style:"width:400px;height:150px;border:solid 1px black;"

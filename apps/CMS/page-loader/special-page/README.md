@@ -1,4 +1,4 @@
-System42's CMS "special pages""
+System42's CMS "special pages"
 ========
 
 This folder contains the Hyperlambda scripts, necessary to show "special pages", such as 404 - Not Found, etc.

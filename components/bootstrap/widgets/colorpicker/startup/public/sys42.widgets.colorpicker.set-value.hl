@@ -11,7 +11,7 @@ create-event:sys42.widgets.colorpicker.set-value
   p5.web.widgets.find:x:/../*/_arg?value
     element:input
     type:text
-  p5.web.widgets.property.set:x:/@p5.web.widgets.find/*/*?value
+  set-widget-property:x:/@p5.web.widgets.find/*/*?value
     value:x:/../*/value?value
 
   /*

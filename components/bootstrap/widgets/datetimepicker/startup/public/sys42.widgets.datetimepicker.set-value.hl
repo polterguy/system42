@@ -1,7 +1,7 @@
 
 /*
  * Creates the Active Event that sets the value of an Ajax DateTimePicker.
- * Pass in the ID to the DateTimePicker you wish to set the value of as [_arg], and its new value as [_value].
+ * Pass in the ID to the DateTimePicker you wish to set the value of as [_arg], and its new value as [value].
  */
 create-event:sys42.widgets.datetimepicker.set-value
 
@@ -11,8 +11,8 @@ create-event:sys42.widgets.datetimepicker.set-value
   p5.web.widgets.find:x:/../*/_arg?value
     element:input
     type:text
-  p5.web.widgets.property.set:x:/@p5.web.widgets.find/*/*?value
-    value:x:/../*/_value?value
+  set-widget-property:x:/@p5.web.widgets.find/*/*?value
+    value:x:/../*/value?value
 
   /*
    * Due to "funny DOM event manipulations" in DateTimePicker, we need to explicitly pass in the
@@ -21,4 +21,4 @@ create-event:sys42.widgets.datetimepicker.set-value
    */
   p5.web.send-javascript:@"$('#{0}').val('{1}').change();"
     :x:/@p5.web.widgets.find/*/*?value
-    :x:/../*/_value?value
+    :x:/../*/value?value

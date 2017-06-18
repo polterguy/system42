@@ -1,24 +1,24 @@
-The fastest Ajax Datagrid on the planet
+﻿
+The System42 Ajax datagrid
 ========
 
-This folder contains, what is probably the fastest and smallest Ajax Datagrid on the planet. In its example implementation, it can be tweaked
+This folder contains the P5 datagrid. In its example implementation, it can be tweaked
 down to ~8KB of content in total, which includes its CSS files, JavaScript, and HTML. It renders HTML back to the client, which
-means it is very web friendly, compared to many other similar widgets, that entirely builds their DOM, based upon some JSON callback,
-or similar technique.
+means it is very web friendly, compared to many other similar widgets, that entirely builds their DOM based upon some JSON callback using
+"magic divs".
 
 To use it, simply add it to a container widget collection, through its widget creational Active Event *[sys42.widgets.datagrid]*. However,
 before you can use it, you must make sure you somehow have data to display, which can be accomplished with the following code.
 
 ```
-sys42.csv.import:/sample.csv
+sys42.csv.import:~/sample.csv
 ```
 
-The above code, assumes you have a CSV file at the root of your [p5.webapp](/core/p5.webapp/) folder, who's name is _"sample.csv"_. You
+The above code, assumes you have a CSV file at the root of your user's main folder, who's name is _"sample.csv"_. You
 can use any CSV file you wish, but the examples shown in this document, assumes its name is _"sample.csv"_.
 
 You can find a nice dataset at [briandunning.com](https://www.briandunning.com/sample-data/us-500.zip), which contains 500 records of names.
-Download the file, rename it to _"sample.csv"_, and put it into your main [p5.webapp](/core/p5.webapp/) directory, before evaluating the above
-Hyperlambda.
+Download the file, rename it to _"sample.csv"_, and put it into your main user's directory, before evaluating the above Hyperlambda.
 
 After having evaluated the above Hyperlambda in for instance the CMS/Executor, you can create an Ajax Datagrid, by for instance putting 
 the following code into a new _"lambda"_ page of System42's CMS.
@@ -34,15 +34,15 @@ create-widget:datagrid-wrapper-1
 
       // Lambda invoked when datagrid needs items.
       .on-get-items
-        if:x:/../*/_query?value
+        if:x:/../*/query?value
           p5.data.select:x:@"/*/*/sample.csv/*/""=:regex:/{0}/i""/./[{1},{2}]"
-            :x:/../*/_query?value
-            :x:/../*/_start?value
-            :x:/../*/_end?value
+            :x:/../*/query?value
+            :x:/../*/start?value
+            :x:/../*/end?value
         else
           p5.data.select:x:/*/*/sample.csv/[{0},{1}]
-            :x:/../*/_start?value
-            :x:/../*/_end?value
+            :x:/../*/start?value
+            :x:/../*/end?value
         add:x:/../*/return/*/items
           src:x:/../**/p5.data.select/*/sample.csv
         return
@@ -51,9 +51,9 @@ create-widget:datagrid-wrapper-1
       // Lambda invoked when an item has beeen in-place edited.
       .on-edit-item
         p5.data.update:x:@"/*/*/sample.csv/""=:guid:{0}""/*/{1}?value"
-          :x:/../*/_row?value
-          :x:/../*/_column?value
-          src:x:/../*/_value?value
+          :x:/../*/row?value
+          :x:/../*/column?value
+          src:x:/../*/value?value
         return:bool:true
 ```
 
@@ -134,7 +134,7 @@ create-widget:datagrid-wrapper-2
         return:bool:true
 ```
 
-Notice, you can also turn off editing of specific cells this same way. The *[_edit]* argument, can be added to only cells with some specific
+Notice, you can also turn off editing of specific cells this same way. The *[edit]* argument, can be added to only cells with some specific
 values if you wish.
 
 The *[.on-edit-item]* lambda callback, is invoked when some cell of your datagrid has been successfully edited. This can be done, by
@@ -146,7 +146,7 @@ clicking the cell, typing in a new value, and hitting carriage return. *[.on-edi
 
 The *[.on-get-items]* lambda callback, is given at least two arguments;
 
-* [start] - Which is the zeroth index start of the data it wants
+* [start] - Which is the zero'th index start of the data it wants
 * [end] - Which is the end of the data it wants
 
 The logic of the above two arguments, are as follows; _"from and including start, to but not including end"_.
@@ -160,7 +160,7 @@ You can also set the datagrid in _"row selection"_ mode. In this mode, inline ed
 choose to select an entire row. This is done by dropping the *[.on-edit-item]* callback, and instead supply an *[.on-select-items]*
 lambda callback.
 
-In addition, you can change the size of your pages by passing in *[_page-size]* with an integer value of how many records you wish to 
+In addition, you can change the size of your pages by passing in *[page-size]* with an integer value of how many records you wish to 
 show for each page.
 
 In the example below, we have increased the page size to 5, and turned on row selection instead of inline editing, where we show
@@ -263,7 +263,7 @@ create-widget:datagrid-wrapper-3
 
 In our above example, we have completely dropped the *[.on-edit-item]* callback, and instead provided an *[.on-select-items]*. This
 ensures the user can select a row, instead of inline editing a cell's content. This lambda callback is mutually exclusive with 
-the *[.on-edit-item]* callback. Meaning, you must choose one of them, and not both!
+the *[.on-edit-item]* callback. Meaning, you must use only _one_ of these callbacks!
 
 The above code, will create something looking like the following, asssuming you've got some CSV file in your database.
 
@@ -272,7 +272,7 @@ The above code, will create something looking like the following, asssuming you'
 ## Adding additional pager widgets
 
 If you wish, you can inject your own additional widgets in between the _"previous"_ and _"next"_ buttons in the pager. This is done through adding
-your own *[_pager-widgets]* collection, which becomes a *[widget]* collection stuffed in between the previous and next buttons. Consider the 
+your own *[pager-widgets]* collection, which becomes a *[widget]* collection stuffed in between the previous and next buttons. Consider the 
 following.
 
 ```
@@ -320,7 +320,7 @@ create-widget:datagrid-wrapper-4
 The above Hyperlambda, simply injects a hyperlink, button type of widget, which once clicked, shows an _"info-tip"_ window. Feel free to add 
 anything you wish in here though.
 
-Although you could technically put any type of widgets you wish in the *[_pager-widgets]* collection, you'd probably have to style them, in your
+Although you could technically put any type of widgets you wish in the *[pager-widgets]* collection, you'd probably have to style them, in your
 own CSS, unless you add a hyperlink _"a"_ element type of widget, to not mess up the layoutof the datagrid.
 
 ## Template columns
@@ -450,11 +450,14 @@ create-widget:datagrid-wrapper-5
        * column header is clicked.
        */
       .on-header-clicked
-        p5.web.widgets.property.get:x:/../*/_event?value
+        get-widget-property:x:/../*/_event?value
           innerValue
         sys42.windows.info-tip:'{0}' was clicked.
-          :x:/@p5.web.widgets.property.get/*/*?value
+          :x:/@get-widget-property/*/*?value
 ```
+
+Notice, you might have to horizontally scroll your datagrid above to see your custom buttons, depending upon how many rows your 
+sample.csv data set has.
 
 In the above example, we have also turned of the entire footer, effectively disabling paging and searching/filtering your items.
 The above example, will produce something resembling the following.
@@ -466,13 +469,12 @@ own logic and/or UI.
 
 ## Clickable headers
 
-Our last example above, also demonstrate how to turn on _"clickable headers"_. By default, the headers of your Datagrid are not clickable.
+Our last example above, also demonstrate how to turn on clickable headers. By default, the headers of your Datagrid are not clickable.
 You can easily turn this on though, by adding your own *[.on-header-clicked]* lambda callback when creating your grid. This makes sure 
-your datagrid's headers becomes clickable, which you could use to for instance sort your data, filter according to columns, etc, etc, etc.
+your datagrid's headers becomes clickable, which you could use to for instance sort your data, filter according to columns, etc.
 
 In our example above, we simply retrieve the name of the column that was clicked, before we show a *[sys42.windows.info-tip]* window,
-showing the name of the column that was clicked. You are free to implement any logic you wish here though, including sorting, deletion of column,
-etc, etc, etc.
+showing the name of the column that was clicked. You are free to implement any logic you wish here though, including sorting, deletion of column, etc.
 
 ## Not accepting input
 
@@ -524,10 +526,10 @@ your textbox with some red border.
 
 ## Alternative types of in-place editors
 
-If you wish, you can also override the default type of textbox, used for editing an item, by return a *[_type]* child from 
+If you wish, you can also override the default type of textbox, used for editing an item, by return a *[type]* child from 
 your *[.on-get-items]* callback. Below we are for instance using a number type of textbox, for editing the 5th column in our datagrid.
 
-Notice, this requires that the data for your 5th column actually is a number, and not some plain text.
+Notice, this requires that the data for your 7th column actually is a number, and not some plain text.
 
 ```
 create-widget:datagrid-wrapper-6
@@ -554,7 +556,7 @@ create-widget:datagrid-wrapper-6
 
         // Here we make sure that the 5th column in-place editor becomes a number
         // type of textbox.
-        add:x:/../*/return/*/items/*/5
+        add:x:/../*/return/*/items/*/7
           src
             type:number
         return

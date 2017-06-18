@@ -28,7 +28,7 @@ button
 
     /*
      * Making sure we change the [template] data segment to a "drop down selection" type
-     * of [data] segment, by appending our choices to it as [_options].
+     * of [data] segment, by appending our choices to it as [options].
      * This is done by fetching all files from "/system42/apps/CMS/page-templates/", and
      * using these as choices for user.
      */
@@ -44,12 +44,12 @@ button
           :x:/..for-each/*/_dp?value
     add:x:/../*/sys42.windows.wizard/*/data/*/template
       src
-        _options
+        options
           none:
 
     /*
      * Making sure we change the [role] data segment to a "drop down selection" type
-     * of [data] segment, by appending our choices to it as [_options].
+     * of [data] segment, by appending our choices to it as [options].
      * This is done by fetching all distinct user roles, in addition to appending a 
      * static "empty" role (no restrictions for access).
      */
@@ -60,7 +60,7 @@ button
           :x:/..for-each/*/_dp?value
     add:x:/../*/sys42.windows.wizard/*/data/*/role
       src
-        _options
+        options
 
     /*
      * Showing actual wizard window.

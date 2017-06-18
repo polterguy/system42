@@ -1,11 +1,10 @@
-System42, a non-CMS
+
+System42, an anti-CMS for Phosphorus Five
 ========
 
-System42 is an example minimalistic CMS and use-case of [Phosphorus Five](https://github.com/polterguy/phosphorusfive).
-It also includes several helper components.
-
-The purpose of System42, is to provide a starting point, and example/reference implementation,
-when developing Phosphorus Five applications.
+System42 is an example minimalistic "CMS" and use-case of [Phosphorus Five](https://github.com/polterguy/phosphorusfive).
+It also includes several helper components. The purpose of System42, is to provide a starting point, 
+and example/reference implementation when developing Phosphorus Five applications.
 
 ![alt screenshot](screenshot.png)
 
@@ -15,9 +14,8 @@ into the "/system42/apps/" folder, with optionally one file called "launch.hl",
 and another file called "startup.hl" - And your app should be ready for use.
 
 The "startup.hl" file is evaluated when the server is started, and used for initializing
-your app, by creating supporting Active Events, and so on. The "launch.hl" file,
+your app, by creating supporting Active Events, etc. The "launch.hl" file,
 is expected to "launch" your app, whatever that means for your specific app.
-
 If your app has a "startup.hl" file, you'd probably want to evaluate this file after the x-copy
 operation.
 
@@ -28,6 +26,11 @@ might be either a visual widget, or a supporting Active Event, or anything in be
 
 Make sure you put the system42 folder inside of your _"/phosphorusfive/core/p5.webapp/"_ folder, and make sure
 the System42 folder is called exactly _"system42"_. Remove any additional parts of its name, such as versioning number, etc.
+Restart your web server process, and you should be up running.
+
+During the first startup of System42, you will be required to supply a server salt, and a root password. If you're in a live environment,
+and cannot for some reasons do this, you can simply copy your "db" folder and "auth.hl" file, from another system, where it's previously
+setup, at the same time you copy your system42 folder.
 
 ## Structure
 
@@ -36,12 +39,11 @@ couple of helper Active Events, for evaluating Hyperlambda files, and folders. I
 all files in the "/system42/startup/" folder.
 
 When it is done with the above tasks, it will evaluate all "application specific" and "components specific"
-startup files. These are files inside of any "/system42/apps/xxx/" and "/system42/components/xxx/" folders, 
+startup files. These are files inside of any "/system42/apps/*/" and "/system42/components/*/" folders, 
 who's names are "startup.hl".
 
 This allows you to create startup Hyperlambda scripts, both on system level, and on application/component level, 
-for apps and components, that needs some sort of startup/initialization scripts, to be evaluated during installation,
-or during startup.
+that needs some sort of startup/initialization scripts, to be evaluated during startup.
 
 ### The "apps" folder
 
@@ -51,46 +53,30 @@ folder for details about this folder.
 
 ### The "components" folder
 
-This is the System42 version of your windows "COM objects", and contains components in your System42 installation, 
-which you can reuse in your apps. See the documentation for the [components](components/) folder for details about this folder.
+This contains your components, which you can reuse in your apps. See the documentation for the [components](components/) 
+folder for details about this folder.
 
 ### The "startup" folder
 
 This folder contains files that are evaluated during application startup of your server, either because of your 
-server rebooting, or because of the web-server process being restarted for some reasons.
+server rebooting, or because of the web-server process being restarted for some reasons. Normally you would want to either directly
+or indirectly create your global Active Events here, which multiple apps somehow are dependent upon.
 
 ### Helper Active Events
 
-Even if you choose to entirely delete System42, and the CMS, to create your own host from scratch - There are still some helper 
-Active Events you should consider keeping.
-
-Some of them are mentioned below.
+Some of the more useful Active Events which you'll probably want to take advantage of in most of your applications, are listed below.
 
 * [sys42.utilities.execute-lambda-file] - Executes one or more Hyperlambda files
 * [sys42.utilities.execute-lambda-folder] - Executes all Hyperlambda files in a folder, recursively
-* [sys42.utilities.get-event] - Returns the p5.lambda code for one or more dynamically created Active Events
 * [sys42.utilities.get-widget] - Returns all lambda associated with a widget, including events (reverse engineers a widget)
 * [sys42.utilities.empty-user-temp-folder] - Which empties a user's "temp" folder
 
 System42 might also contain other supporting Active Events, depending upon which types of apps and/or components you have in your specific
 installation. In addition, System42 contains a web based Hyperlambda editor, built on top of CodeMirror, an HTML editor,
-built on top of CKEditor, and other things, that might help you out, when creating your own apps. Including many helper widgets, such
+built on top of CKEditor, and other things, that might help you out when creating your own apps. Including many helper widgets, such
 as Ajax TreeViews, Ajax TabControls, Ajax DataGrids, and so on. System42, also by default, includes jQuery and Bootstrap for your
 convenience.
 
 System42 also contains a suite of Unit Tests, to test the integrity of Phosphorus Five. Which is highly extendible, such that you can 
 create your own tests, and plug them into the existing suite.
-
-### Rolling your own from scratch
-
-If you wish to use Phosphorus Five as a stand alone framework, you should delete the entire _"/system42/"_ folder, 
-and modify the _".p5.webapp.application-startup-file"_ setting in your web.config, beneath your p5.webapp folder. 
-This allows you to create web apps from scratch, having complete control over every aspect of your systems.
-
-If you do, you are responsible for creating your own *[p5.web.load-ui]* Active Event, to load pages, according to URLs.
-
-However, you are probably better off simply deleting the apps and components you do not want to use, since 
-there are many useful helper components in System42. Such as app settings supporting Active Events, and extension web widgets for instance.
-
-
 
