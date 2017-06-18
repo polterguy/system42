@@ -22,6 +22,11 @@ operation.
 The "components" folder works similarly, except it doesn't install an "app", but rather a "component", which
 might be either a visual widget, or a supporting Active Event, or anything in between.
 
+Below you can find the two most important folders in the system.
+
+- [Components](components/) which are the components in System42, such as Ajax TreeViews, Modal Windows, etc
+- [Apps](apps/) which are the preinstalled apps in System42, such as the "anti-CMS", Unit tests, and Hyperlambda Executor
+
 ## Installation
 
 Make sure you put the system42 folder inside of your _"/phosphorusfive/core/p5.webapp/"_ folder, and make sure

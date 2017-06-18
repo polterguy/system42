@@ -10,13 +10,13 @@ having been evaluated. Below is a screenshot of it.
 To try it out, start System42, and paste the following code into the input editor, and click the "Evaluate" button.
 
 ```
-p5.web.widgets.create-literal
+create-widget:foo
   element:h3
   parent:content
   class:col-xs-12
   innerValue:Click me!
   onclick
-    p5.web.widgets.property.set:x:/../*/_event?value
+    set-widget-property:foo
       innerValue:Hello World!
 ```
 
