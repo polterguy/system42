@@ -6,7 +6,7 @@
 
 Stop further execution
   return
-    throw:Assert error, [return] misbehaved
+  throw:Assert error, [return] misbehaved
 
 
 Return constant value
