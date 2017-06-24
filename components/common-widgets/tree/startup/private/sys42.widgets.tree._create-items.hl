@@ -111,7 +111,8 @@ create-event:sys42.widgets.tree._create-items
                 p5.web.widgets.property.get:x:/-/*/*?value
                   _item-id
                 add:x:/../*/sys42.widgets.tree.toggle-items/*|/../*/sys42.widgets.tree.select-items/*
-                  src:x:/../*/p5.web.widgets.property.get/*/*?value
+                  src:@"""{0}"""
+                    :x:/../*/p5.web.widgets.property.get/*/*?value
 
                 /*
                  * Then finding "root tree" widget for currently clicked item, such that we can pass it
