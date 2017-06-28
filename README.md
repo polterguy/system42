@@ -34,9 +34,9 @@ the System42 folder is called exactly _"system42"_. Remove any additional parts 
 
 Restart your web server process, and you should be up running.
 
-During the first startup of System42, you will be required to supply a server salt, and a root password. If you're in a live environment,
-and cannot for some reasons do this, you can simply copy your "db" folder and "auth.hl" file, from another system, where it's previously
-setup, at the same time you copy your system42 folder.
+During the first startup of System42, you will be required to supply a server salt, and a root password. The salt is just a bunch
+of random characters used to salt your passwords, and seed the random number generator for cryptographic features. The root
+password should be difficult to guess, especially in live environments, that are exposed onto the world wide web.
 
 ## Structure
 
