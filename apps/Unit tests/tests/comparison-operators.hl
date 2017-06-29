@@ -254,3 +254,16 @@ Active event condition yielding match when NOT for exist on false
     // Do nothing
   else
     throw:Assert error, conditional operators misbehaved
+
+
+Oblivion equality like
+  if:x:/@non-existing?value
+    ~:foo
+    throw:Assert error, conditional operators misbehaved
+
+
+Oblivion non-equality like
+  if:x:/@non-existing?value
+    !~:foo
+    not
+    throw:Assert error, conditional operators misbehaved
