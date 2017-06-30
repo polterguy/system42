@@ -7,17 +7,22 @@ p5.page:/
   name:Home
   template:/system42/apps/CMS/page-templates/default.hl
   role:
-  html:@"<img src=""/system42/apps/CMS/media/marvin-headshot.png"" style=""float:left;margin-right:25px;margin-top:25px;"" />
+  html:@"
+<a href='https://gaiasoul.com/license' target='_blank'>
+<img src=""/system42/apps/CMS/media/product-box.png"" style=""float:left;margin-right:25px;margin-top:25px;"" /></a>
 
-<p><img src=""/system42/apps/CMS/media/p5.svg"" style=""float:right;margin-left:25px;"" /></p>
+<h2>Welcome to Phosphorus Five and System42</h2>
 
-<h2>Home</h2>
-
-<p>Phosphorus Five is a web operating system written in C# that helps you create rich web apps.<br>
+<p>Phosphorus Five is a web application framework written in C# that helps you create rich web apps.<br>
 System42 is a sample use-case, utilizing P5, to create a minimalistic CMS.<br>
-For more information, check out the <a href='https://github.com/polterguy/phosphorusfive'>documentation</a>.</p>
+For more information, check out the <a href='https://github.com/polterguy/phosphorusfive' target='_blank'>documentation</a>.</p>
 
-<p>If you need help, or found a bug, feel free to supply an <a href='https://github.com/polterguy/phosphorusfive/issues'>issue</a>.</p>
+<p>If you need help, or found a bug, feel free to supply an <a href='https://github.com/polterguy/phosphorusfive/issues' target='_blank'>issue</a>.</p>
 
 <p>Contact me on <a href='mailto:thomas@gaiasoul.com?subject=Ask%20Marvin'>email</a>. I am available for hire :)</p>
-<p>Read the <a href=""https://github.com/polterguy/phosphorusfive-dox"">book</a> about P5.</p>"
+
+<p>Read the <a href=""https://github.com/polterguy/phosphorusfive-dox"" target='_blank'>book</a> about P5.</p>
+
+<p>You might want to consider obtaining <a href='https://github.com/polterguy/micro' target='_blank'>Micro</a> too, to create even more stunning apps.</p>
+
+<p>If you want to create closed source applications, you'll need to <a href='https://gaiasoul.com/license' target='_blank'>obtain a commercial license</a>.</p>"
