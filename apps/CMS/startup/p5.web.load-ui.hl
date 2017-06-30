@@ -72,10 +72,11 @@ create-event:p5.web.load-ui
 
     /*
      * Figuring out which page to load according to argument supplied in [url].
-     * Notice, if page is not found, we simply load the first page we find.
      */
-    p5.data.select:x:@"(/*/*/p5.page/""={0}""|/*/*/p5.page/[0,1])/[0,1]"
-      :x:/../*/url?value
+    split:x:/../*/url?value
+      =:?
+    p5.data.select:x:@"/*/*/p5.page/""={0}"""
+      :x:/@split/0?name
 
     /*
      * Checking if page exists, and if not, loading our "page not found" special page.
@@ -89,7 +90,7 @@ create-event:p5.web.load-ui
     else
 
       /*
-       * Adding up all nodes from results of p5.data.select into [execute-lisp-file], which is our [p5.page] object.
+       * Adding up all nodes from results of p5.data.select into [sys42.utilities.execute-lambda-file], which is our [p5.page] object.
        */
       add:x:/+3/*/_args
         src:x:/..else/..else/*/p5.data.select/*/*
