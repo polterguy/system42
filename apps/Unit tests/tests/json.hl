@@ -1,0 +1,160 @@
+
+/*
+ * Unit tests for [json2lambda] and [lambda2json].
+ */
+
+
+Convert JSON to lambda
+  json2lambda:@"{
+  'name':'John Doe',
+  'address':{
+    'zip':56789,
+    'str':'Dunbar Road'
+  },
+  'list':[
+    57,
+    77, {
+      'foo':'bar'
+    }
+  ]
+}"
+  if:x:/@json2lambda
+    !=:node:@"json2lambda
+  result
+    name:John Doe
+    address
+      zip:long:56789
+      str:Dunbar Road
+    list
+      :long:57
+      :long:77
+      foo:bar"
+    throw:Unexpected lambda result after conerting JSON
+
+
+Convert JSON to lambda with __value
+  json2lambda:@"{
+  'name':'John Doe',
+  'address':{
+    '__value':57,
+    'zip':56789,
+    'str':'Dunbar Road'
+  }
+}"
+  if:x:/@json2lambda
+    !=:node:@"json2lambda
+  result
+    name:John Doe
+    address:long:57
+      zip:long:56789
+      str:Dunbar Road"
+    throw:Unexpected lambda result after conerting JSON
+
+
+Convert from lambda to JSON and back
+  _json
+    foo:thomas
+    bar:Howdy world
+    johnny
+      tjobing:long:57
+      bar:long:6767
+        foo:howdy
+        foo2:double:57.7
+        array
+          :foo
+          :bar
+          :long:57
+          ""
+            foo:bar
+            howdy:world
+            jo
+              :long:1
+              :long:3
+          ""
+          :gokk
+  lambda2json:x:/@_json/*
+  json2lambda:x:/-?value
+  if:x:/@_json/*
+    !=:x:/@json2lambda/*/*
+    throw:Unexpected lambda result after conerting back and forth between JSON and lambda
+
+
+Create array JSON
+  lambda2json
+    :foo
+    :bar
+  if:x:/@lambda2json?value
+    !=:@"[""foo"",""bar""]"
+    throw:Unexpected JSON result after invoking [lambda2json]
+
+
+Create empty JSON
+  lambda2json
+  if:x:/@lambda2json?value
+    throw:Unexpected JSON result after invoking [lambda2json]
+
+
+Create complex JSON with both value and children nodes
+  lambda2json
+    foo-1:bar-1
+    foo-2:bar-2
+      howdy
+        :long:57
+        :long:67
+        foo:bar
+        howdy
+          world:2.0
+  if:x:/@lambda2json?value
+    !=:@"{""foo-1"":""bar-1"",""foo-2"":{""__value"":""bar-2"",""howdy"":[57,67,{""foo"":""bar""},{""howdy"":{""world"":""2.0""}}]}}"
+    throw:Unexpected JSON result after invoking [lambda2json]
+
+
+Create complex JSON object having mixed array property
+  lambda2json
+    foo-1:bar-1
+    foo-2:bar-2
+      howdy
+        :long:57
+        :float:67
+        foo:bar
+        ""
+          world:2.0
+          howdy:jo
+  if:x:/@lambda2json?value
+    !=:@"{""foo-1"":""bar-1"",""foo-2"":{""__value"":""bar-2"",""howdy"":[57,67.0,{""foo"":""bar""},{""world"":""2.0"",""howdy"":""jo""}]}}"
+    throw:Unexpected JSON result after invoking [lambda2json]
+
+
+Create complex JSON with simple object property
+  lambda2json
+    foo-1:bar-1
+    foo-2:bar-2
+    foo-3
+      foo:bar
+      bar:foo
+  if:x:/@lambda2json?value
+    !=:@"{""foo-1"":""bar-1"",""foo-2"":""bar-2"",""foo-3"":{""foo"":""bar"",""bar"":""foo""}}"
+    throw:Unexpected JSON result after invoking [lambda2json]
+
+
+Create JSON object with null value
+  lambda2json
+    foo-1:bar-1
+    foo-2
+  if:x:/@lambda2json?value
+    !=:@"{""foo-1"":""bar-1"",""foo-2"":null}"
+    throw:Unexpected JSON result after invoking [lambda2json]
+
+
+Create JSON array with null value
+  lambda2json
+    :bar-1
+    ""
+    :bar-2
+  if:x:/@lambda2json?value
+    !=:@"[""bar-1"",null,""bar-2""]"
+    throw:Unexpected JSON result after invoking [lambda2json]
+
+
+
+
