@@ -299,7 +299,7 @@ else
     * Creating the logout button, but first, since user is logged in, our "apps" menu items,
     * if there are any apps.
     */
-  p5.io.folder.list-folders:/system42/apps/
+  p5.io.folder.list-folders:@SYS42/apps/
   if:x:/-/*?count
     >:int:0
     _eval

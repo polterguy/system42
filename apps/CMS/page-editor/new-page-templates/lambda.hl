@@ -5,7 +5,7 @@
 
 
 return
-  template:/system42/apps/CMS/page-templates/default.hl
+  template:/modules/system42/apps/CMS/page-templates/default.hl
   lambda:@"/*
  * Default [lambda] type of page.
  * Edit this page to meet your own needs.

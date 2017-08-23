@@ -5,7 +5,7 @@
  *
  * Creates three Active Events. Active events this file creates are as follows;
  *
- * [p5.io.unroll-path.@system42] - Which evaluates to the "/system42/" folder, and is used as a "path variable".
+ * [p5.io.unroll-path.@system42] - Which evaluates to the "/modules/system42/" folder, and is used as a "path variable".
  * [sys42.utilities.execute-lambda-file] - Evaluates one or more Hyperlambda files.
  * [sys42.utilities.execute-lambda-folder] - Evaluates all Hyperlambda files inside all specified folders.
  *
@@ -16,10 +16,10 @@
 
 
 /*
- * Creates the Active Event that points to our "/system42/" folder.
+ * Creates the Active Event that points to our "/modules/system42/" folder.
  */
 create-event:p5.io.unroll-path.@SYS42
-  return:/system42
+  return:/modules/system42
 
 
 /*
@@ -99,7 +99,7 @@ create-event:sys42.utilities.execute-lambda-folder
 
 
 /*
- * After creating the above Active Events, this file will evaluate all files in the "/system42/startup/" 
+ * After creating the above Active Events, this file will evaluate all files in the "/modules/system42/startup/" 
  * folder recursively, by using the Active Events above.
  */
 sys42.utilities.execute-lambda-folder:@SYS42/startup/

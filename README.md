@@ -10,7 +10,7 @@ and example/reference implementation when developing Phosphorus Five application
 
 System42, is also a "host" for your web apps, by allowing you to install your apps.
 To install an app into System42, is as simple as an x-copy operation, pasting your app 
-into the "/system42/apps/" folder, with optionally one file called "launch.hl",
+into the "/modules/system42/apps/" folder, with optionally one file called "launch.hl",
 and another file called "startup.hl" - And your app should be ready for use.
 
 The "startup.hl" file is evaluated when the server is started, and used for initializing
@@ -42,10 +42,10 @@ password should be difficult to guess, especially in live environments, that are
 
 The _"application-startup.hl"_ file is evaluated when your application pool starts. This file creates a 
 couple of helper Active Events, for evaluating Hyperlambda files, and folders. In addition, it evaluates 
-all files in the "/system42/startup/" folder.
+all files in the "/modules/system42/startup/" folder.
 
 When it is done with the above tasks, it will evaluate all "application specific" and "components specific"
-startup files. These are files inside of any "/system42/apps/*/" and "/system42/components/*/" folders, 
+startup files. These are files inside of any "/modules/system42/apps/*/" and "/modules/system42/components/*/" folders, 
 who's names are "startup.hl".
 
 This allows you to create startup Hyperlambda scripts, both on system level, and on application/component level, 

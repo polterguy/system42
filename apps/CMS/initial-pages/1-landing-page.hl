@@ -5,11 +5,11 @@
 p5.page:/
   type:html
   name:Home
-  template:/system42/apps/CMS/page-templates/default.hl
+  template:/modules/system42/apps/CMS/page-templates/default.hl
   role:
   html:@"
 <a href='https://gaiasoul.com/license' target='_blank'>
-<img src=""/system42/apps/CMS/media/product-box.png"" style=""float:left;margin-right:25px;margin-top:25px;"" /></a>
+<img src=""/modules/system42/apps/CMS/media/product-box.png"" style=""float:left;margin-right:25px;margin-top:25px;"" /></a>
 
 <h2>Welcome to Phosphorus Five and System42</h2>
 

@@ -50,12 +50,12 @@ create-event:sys42.widgets.ck-editor
         /*
          * Setting CKEditor's basepath.
          */
-        p5.web.include-javascript:"CKEDITOR_BASEPATH='/system42/components/common-widgets/ckeditor/media/';"
+        p5.web.include-javascript:"CKEDITOR_BASEPATH='/modules/system42/components/common-widgets/ckeditor/media/';"
 
         /*
          * Loading CKEditor's JavaScript file
          */
-        p5.web.include-javascript-file:/system42/components/common-widgets/ckeditor/media/ckeditor.js
+        p5.web.include-javascript-file:/modules/system42/components/common-widgets/ckeditor/media/ckeditor.js
 
         /*
          * JavaScript to replace textarea with CKEditor instance

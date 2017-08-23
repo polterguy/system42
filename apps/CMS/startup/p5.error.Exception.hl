@@ -42,7 +42,7 @@ create-event:p5.error.Exception
     set:x:/../*/_ret?value
       src:@"<html>
   <head>
-    <link rel=""stylesheet"" type=""text/css"" href=""/system42/apps/CMS/media/css/main.min.css""></link>
+    <link rel=""stylesheet"" type=""text/css"" href=""/modules/system42/apps/CMS/media/css/main.min.css""></link>
   </head>
   <body>
     <div class=""p5-exception"">

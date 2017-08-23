@@ -29,7 +29,7 @@ button
     /*
      * Making sure we change the [template] data segment to a "drop down selection" type
      * of [data] segment, by appending our choices to it as [options].
-     * This is done by fetching all files from "/system42/apps/CMS/page-templates/", and
+     * This is done by fetching all files from "/modules/system42/apps/CMS/page-templates/", and
      * using these as choices for user.
      */
     p5.io.folder.list-files:@CMS/page-templates/

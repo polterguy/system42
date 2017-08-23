@@ -66,5 +66,5 @@ p5.web.widgets.create-container:set-server-salt
              * Deleting main server-salt widget, and moving on to the setting of the root password.
              */
             p5.web.widgets.delete:set-server-salt
-            sys42.utilities.execute-lambda-file:/system42/apps/CMS/installation/set-root-password.hl
+            sys42.utilities.execute-lambda-file:@SYS42/apps/CMS/installation/set-root-password.hl
 

@@ -7,7 +7,7 @@
 
 
 _startup
-p5.io.folder.list-folders:/system42/components/common-windows/
+p5.io.folder.list-folders:@SYS42/components/common-windows/
 for-each:x:/-/*?name
 
   /*

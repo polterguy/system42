@@ -28,7 +28,7 @@ create-widget
 
 The above code will create something like the following.
 
-![alt tag](/core/p5.webapp/system42/components/bootstrap/widgets/colorpicker/screenshots/colorpicker-example-screenshot.png)
+![alt tag](components/bootstrap/widgets/colorpicker/screenshots/colorpicker-example-screenshot.png)
 
 You can pass in the following arguments to the colorpicker.
 
