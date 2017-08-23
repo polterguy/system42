@@ -30,7 +30,7 @@ create-widget:foo
 
 The above code will create something like the following.
 
-![alt tag](components/bootstrap/widgets/datetimepicker/screenshots/datetimepicker-example-screenshot.png)
+![alt tag](screenshots/datetimepicker-example-screenshot.png)
 
 It features the following options.
 
