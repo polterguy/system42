@@ -6,6 +6,9 @@ System42 is an example minimalistic "CMS" and use-case of [Phosphorus Five](http
 It also includes several helper components. The purpose of System42, is to provide a starting point, 
 and example/reference implementation when developing Phosphorus Five applications.
 
+Notice, if you install System42, it will completely override the default desktop, and entirely replace the default
+logic in Phosphorus Five, with its own URL resolver, and so on. Completely hiding the main P5 _"operating system"_.
+
 ![alt screenshot](screenshot.png)
 
 System42, is also a "host" for your web apps, by allowing you to install your apps.
@@ -29,7 +32,7 @@ Below you can find the two most important folders in the system.
 
 ## Installation, getting started
 
-Make sure you put the system42 folder inside of your _"/phosphorusfive/core/p5.webapp/"_ folder, and make sure
+Make sure you put the system42 folder inside of your _"/phosphorusfive/core/p5.webapp/modules/"_ folder, and make sure
 the System42 folder is called exactly _"system42"_. Remove any additional parts of its name, such as versioning number, etc.
 
 Restart your web server process, and you should be up running.
