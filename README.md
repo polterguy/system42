@@ -9,6 +9,11 @@ and example/reference implementation when developing Phosphorus Five application
 Notice, if you install System42, it will completely override the default desktop, and entirely replace the default
 logic in Phosphorus Five, with its own URL resolver, and so on. Completely hiding the main P5 _"operating system"_.
 
+Notice also, System42 is a __playground__ and example use-case, and not intended to be used in live production.
+It is not very mature unfortunately, since it was built simultaneously with Phosphorus Five, and is anyways considered
+way too much _"bloat"_ to be used in real live production environments. However, as a simplistic use-case of what you can
+do with P5, it should probably be just about right.
+
 ![alt screenshot](screenshot.png)
 
 System42, is also a "host" for your web apps, by allowing you to install your apps.
