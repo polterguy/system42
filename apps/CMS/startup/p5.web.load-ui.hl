@@ -71,6 +71,18 @@ create-event:p5.web.load-ui
       return
 
     /*
+     * Checking if a default app has been configured.
+     */
+    p5.config.get:p5.core.default-app
+    if:x:/@p5.config.get/*?value
+
+      /*
+       * Default app is configured, launching it, and returning early.
+       */
+      sys42.utilities.execute-lambda-file:x:/@p5.config.get/*?value
+      return
+
+    /*
      * Figuring out which page to load according to argument supplied in [url].
      */
     split:x:/../*/url?value
