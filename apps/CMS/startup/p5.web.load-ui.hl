@@ -75,6 +75,8 @@ create-event:p5.web.load-ui
      */
     p5.config.get:p5.core.default-app
     if:x:/@p5.config.get/*?value
+      and:x:/../*/url?value
+        =:/
 
       /*
        * Default app is configured, launching it, and returning early.
@@ -95,6 +97,22 @@ create-event:p5.web.load-ui
      */
     if:x:/-/*?count
       =:int:0
+
+      /*
+       * Checking if there exists a module with the specified name.
+       */
+      split:x:/../*/url?value
+        =:/
+        =:?
+      if
+        fetch:x:/0/0?value
+          file-exists:/modules/{0}/launch.hl
+            :x:/@split/0?name
+        eval-x:x:/+/*/url
+        micro.evaluate.file:/modules/{0}/launch.hl
+          :x:/@split/0?name
+          url:x:/../*/url?value
+        return
 
       sys42.utilities.execute-lambda-file:@CMS/page-loader/special-page/not-found.hl
         _template:@CMS/page-templates/default.hl
