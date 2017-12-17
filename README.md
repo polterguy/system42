@@ -2,6 +2,8 @@
 System42, an anti-CMS for Phosphorus Five
 ========
 
+**WARNING** - This module is deprecated, and no longer supported.
+
 System42 is an example minimalistic "CMS" and use-case of [Phosphorus Five](https://github.com/polterguy/phosphorusfive).
 It also includes several helper components. The purpose of System42, is to provide a starting point, 
 and example/reference implementation when developing Phosphorus Five applications.
