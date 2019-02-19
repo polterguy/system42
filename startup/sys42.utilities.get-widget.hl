@@ -54,7 +54,7 @@ create-event:sys42.utilities.get-widget
        * There are no capital letters in an automatically created ID.
        */
       match:x:/@p5.web.widgets.list/0?value
-        src:regex:/x[abcdef0-9]{7}/c
+        src:/x[abcdef0-9]{7}/c
       if:x:/@match/*?name
         set:x:/@_return-value/-?value
 
@@ -64,7 +64,7 @@ create-event:sys42.utilities.get-widget
      * the automatcally generated ID. Any automatically generated IDs are ALWAYS removed!
      */
     p5.string.match:x:/@_return-value/-/*/name?value
-      src:regex:/x[abcdef0-9]{7}/c
+      src:/x[abcdef0-9]{7}/c
     if:x:/@p5.string.match/*/*?name
       set:x:/@_return-value/-/*/name
 
